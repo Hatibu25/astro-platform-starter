@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Make a Wish | Aaron's Birthday</title>
+	<style>
+		* { box-sizing: border-box; }
+		body {
+			margin: 0; min-height: 100vh; display: grid; place-items: center;
+			padding: 1.5rem; font-family: Georgia, serif; color: #fff; text-align: center;
+			background: linear-gradient(135deg, #ff758c, #ff7eb3, #7f7fd5);
+		}
+		.card {
+			width: min(100%, 600px); padding: 3rem 2rem; border-radius: 28px;
+			background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.4);
+			box-shadow: 0 20px 60px rgba(70, 20, 80, .25); backdrop-filter: blur(10px);
+		}
+		.emoji { font-size: 3rem; }
+		h1 { margin: .5rem 0 .75rem; font-size: clamp(2.3rem, 8vw, 4rem); }
+		.intro { margin: 0 auto 1.5rem; font-size: 1.2rem; line-height: 1.5; }
+		form { display: grid; gap: 1rem; text-align: left; }
+		label { font-weight: bold; }
+		input, textarea {
+			width: 100%; margin-top: .4rem; padding: .9rem 1rem; border: 0;
+			border-radius: 12px; font: inherit; color: #43203b; background: rgba(255,255,255,.92);
+		}
+		textarea { min-height: 130px; resize: vertical; }
+		.button {
+			border: 0; padding: .95rem 1.5rem; border-radius: 999px;
+			color: #d6336c; background: #fff; font: bold 1rem Georgia, serif;
+			cursor: pointer; transition: transform .2s, box-shadow .2s;
+		}
+		.button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+		.status { min-height: 1.5em; margin: .25rem 0 0; font-size: .95rem; }
+		.back { color: #fff; font-size: .95rem; }
+	</style>
+</head>
+<body>
+	<main class="card">
+		<div class="emoji">💌 ✨</div>
+		<h1>Make a wish, Aaron!</h1>
+		<p class="intro">Write a birthday message and share it with the group.</p>
+		<form id="wish-form">
+			<label for="name">Birthday Boy</label>
+			<input id="name" name="name" type="text" placeholder="Aaron">
+			<label for="message">Your Wish</label>
+			<textarea id="message" name="message" required placeholder="Write your wish here..."></textarea>
+			<button class="button" type="submit">Submit 💬</button>
+			<p class="status" id="status" role="status" aria-live="polite"></p>
+		</form>
+		<a class="back" href="index.html">Back to the birthday card</a>
+	</main>
+	<script>
+		const form = document.querySelector('#wish-form');
+		const status = document.querySelector('#status');
+		const groupLink = 'https://chat.whatsapp.com/LdIrJij1Vz9IdlDUySB2oD';
+
+		form.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			const name = document.querySelector('#name').value.trim();
+			const message = document.querySelector('#message').value.trim();
+			const text = name ? `${name}: ${message}` : message;
+
+			try {
+				await navigator.clipboard.writeText(text);
+				status.textContent = 'Your message was copied. Paste it into the group when WhatsApp opens!';
+			} catch {
+				status.textContent = 'WhatsApp is opening. Copy your message before sending it!';
+			}
+			window.open(groupLink, '_blank', 'noopener');
+		});
+	</script>
+</body>
+</html>

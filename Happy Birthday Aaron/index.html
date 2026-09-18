@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Happy Birthday, Aaron!</title>
+	<style>
+		* { box-sizing: border-box; }
+		body {
+			margin: 0; min-height: 100vh; display: grid; place-items: center;
+			font-family: Georgia, serif; color: #fff; text-align: center;
+			background: linear-gradient(135deg, #ff758c, #ff7eb3, #7f7fd5);
+			overflow: hidden;
+		}
+		.card {
+			width: min(90%, 600px); padding: 3.5rem 2rem; border-radius: 28px;
+			background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.4);
+			box-shadow: 0 20px 60px rgba(70, 20, 80, .25); backdrop-filter: blur(10px);
+		}
+		.emoji { font-size: 3rem; }
+		h1 { margin: .5rem 0 1rem; font-size: clamp(2.5rem, 8vw, 4.8rem); }
+		p { font-size: 1.35rem; line-height: 1.6; margin: 0 auto 1.8rem; }
+		.button {
+			display: inline-block; padding: .9rem 1.5rem; border-radius: 999px;
+			color: #d6336c; background: #fff; text-decoration: none; font-weight: bold;
+			transition: transform .2s, box-shadow .2s;
+		}
+		.button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+		.confetti { position: fixed; inset: 0; pointer-events: none; font-size: 1.8rem; }
+		.confetti span { position: absolute; animation: fall 7s linear infinite; }
+		.confetti span:nth-child(1){left:10%;animation-delay:-2s}.confetti span:nth-child(2){left:30%;animation-delay:-5s}.confetti span:nth-child(3){left:55%;animation-delay:-1s}.confetti span:nth-child(4){left:78%;animation-delay:-4s}.confetti span:nth-child(5){left:92%;animation-delay:-6s}
+		@keyframes fall { from { top: -10%; transform: rotate(0); } to { top: 110%; transform: rotate(360deg); } }
+	</style>
+</head>
+<body>
+	<div class="confetti" aria-hidden="true"><span>🎉</span><span>✨</span><span>🎈</span><span>🎊</span><span>✨</span></div>
+	<main class="card">
+		<div class="emoji">🎂 🎁 🎈</div>
+		<h1>Happy Birthday, Aaron!</h1>
+		<p>Wishing you an amazing day filled with laughter, love, and unforgettable moments. May this year bring you everything you’re hoping for!</p>
+		<a class="button" href="wish.html">Make a wish ✨</a>
+	</main>
+</body>
+</html>
